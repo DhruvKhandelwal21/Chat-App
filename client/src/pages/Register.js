@@ -136,7 +136,7 @@ const Register = ()=> {
       event.preventDefault();
       
         if(formValidation()){
-          console.log("we are here");
+          // console.log("we are here");
           
           const {userName,email,password}= values;
           const response = await fetch(registerRoute,{
@@ -161,7 +161,7 @@ const Register = ()=> {
             }
             if(data.status===true){
               localStorage.setItem("chat app user",JSON.stringify(data.user));
-              navigate("/");
+              navigate("/avatar");
             }
           }
          
