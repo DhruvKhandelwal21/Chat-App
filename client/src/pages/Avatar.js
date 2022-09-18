@@ -49,7 +49,7 @@ const navigate = useNavigate();
       }, []);
   
     useEffect(()=> {
-        if(!localStorage.getItem("chat app user")){
+        if(!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)){
           navigate("/login");
         }
     },[])
@@ -61,7 +61,7 @@ const navigate = useNavigate();
       }
       else{
         
-        const user =  await JSON.parse(localStorage.getItem("chat app user"));
+        const user =  await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY));
         console.log(user);
         // const id = user._id;
             const response = await fetch(`${avatarRoute}/${user._id}`,{
@@ -83,7 +83,7 @@ const navigate = useNavigate();
                   user.avatarImage = data.image;
 
 
-                  localStorage.setItem("chat app user",JSON.stringify(user));
+                  localStorage.setItem(process.env.REACT_APP_LOCALHOST_KEY,JSON.stringify(user));
                   
                 }
                 navigate("/");

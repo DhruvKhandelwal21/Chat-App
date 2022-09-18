@@ -90,7 +90,7 @@ const Login=()=> {
         
     })
     useEffect( ()=>{
-      if(localStorage.getItem("chat-app-user")){
+      if(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)){
         navigate("/");
       }
       
@@ -110,8 +110,12 @@ const Login=()=> {
        toast.error("enter the password",toastOptions);
        return false;
      }
+     else if(userName===""){
+      toast.error("enter the username",toastOptions);
+      return false;
+     }
      
-     else if(userName.length<3){
+     else if(userName.length<6){
        toast.error("username is too small", toastOptions);
        return false;
      }
@@ -152,7 +156,7 @@ const Login=()=> {
             }
             if(data.status===true){
                 
-              localStorage.setItem("chat app user",JSON.stringify(data.userNameCheck));
+              localStorage.setItem(process.env.REACT_APP_LOCALHOST_KEY,JSON.stringify(data.userNameCheck));
               navigate("/");
             }
           }

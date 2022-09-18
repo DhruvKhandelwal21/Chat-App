@@ -41,10 +41,10 @@ const Chat=()=> {
     
     useEffect(()=> {
    (   async()=>{
-         if(!localStorage.getItem("chat app user")){
+         if(!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)){
             navigate("/login");
          }else{
-             setCurrentUser( await JSON.parse(localStorage.getItem("chat app user")));
+             setCurrentUser( await JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)));
          }
             
          })();
@@ -75,7 +75,7 @@ const Chat=()=> {
   useEffect(()=>{
         if(currentUser){
           socket.current = io(host);
-          socket.current.emit("add-new-user",currentUser._id);
+          socket.current.emit("add new user",currentUser._id);
         }   
   },[currentUser])
 
